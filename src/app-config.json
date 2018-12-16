@@ -1,0 +1,9 @@
+{
+    "db": {
+        "url_path": "localhost:27017",
+        "database": "mongomart"
+    },
+    "app": {
+        "port": 3500        
+    }
+}

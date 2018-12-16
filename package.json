@@ -1,0 +1,25 @@
+{
+  "name": "main-app",
+  "version": "1.0.0",
+  "description": "Backend of Pet-Prject",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.10",
+    "swagger-ui-express": "^4.0.2"
+  },
+  "author": "delv1@fsoft.com.vn",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "nodemon": "^1.18.9"
+  }
+}
