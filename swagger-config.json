@@ -1,5 +1,5 @@
 {
-    "swagger": "1.0",
+    "swagger": "2.0",
     "info": {
       "version": "1.0.0",
       "title": "MainApp",
@@ -15,14 +15,72 @@
       "name": "Main App",
       "description": ""
     }],
-    "schemes": [
-      "http"
-    ],
     "consumes": [
       "application/json"
     ],
     "produces": [
       "application/json"
     ],
-    "path": {}
+    "paths": {
+      "/getAllProduct": {
+        "get": {
+          "tags": [
+            "getAllProduct"
+          ],
+          "description": "Get all product from database",
+          "parameters": [{
+            "name": "",
+            "in": "",
+            "description": ""
+          }],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "400": {
+              "description": "Invalid data"
+            },
+            "404": {
+              "description": "Not found "
+            },
+            "500": {
+              "description": "Server error"
+            }
+          }
+        }
+      },
+    "/getProductDetail/{productId}": {
+      "get": {
+        "tags": [
+          "getProductDetail"
+        ],
+        "description": "Get product detail by productId",
+        "parameters": [{
+          "name": "productId",
+          "in": "path",
+          "description": "productId in item"
+        }],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "404": {
+            "description": "Not found "
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  }
 }

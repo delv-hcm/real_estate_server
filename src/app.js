@@ -6,8 +6,11 @@ var express = require('express'),
     Handler = require('./handlers/handler'),
     router = require('./routers/product.routing'),
     swaggerUi = require('swagger-ui-express'),
-    swaggerDocument = require('../swagger-config.json');
+    swaggerDocument = require('../swagger-config.json'),
+    proxy = require('express-http-proxy'),
+    proxy2 = require('http-proxy-middleware');
 
+const reverseproxy = config.reverseproxy;
 MongoClient.connect(`mongodb://${config.db.url_path}/${config.db.database}`, 
     {useNewUrlParser: true},
     (error, mongoClient) => {
@@ -32,7 +35,29 @@ var startServer = (appconfig, mongoClient) => {
 
 
     app.use(bodParser.json());
-    app.use('./api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+    app.all("*",function(req,res,next){
+        res.header("Access-Control-Allow-Origin", "*");
+         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+          next();
+      });
+  
+    app.use('/api/:url?*', proxy2({
+        target: reverseproxy,
+        secure: false,
+        changeOrigin: true,
+        ws: true,
+        logLevel: 'debug',
+        pathRewrite: (path, req) => {
+            console.log(path.replace('/api', ''));
+            return path.replace('/api', '');
+        },
+       
+       
+    }))
+
     app.get('/', (req, res, next) => {
         res.send('Hello world');
     });

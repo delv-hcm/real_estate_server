@@ -5,6 +5,7 @@
     }
     getAllProduct(){
         return async(req, res, next) => {
+            console.log('Request: get all product');
             await this._cursor.collection(`${this._collection}`).find({})
             .toArray()
             .then((result) =>{res.send(result)})
