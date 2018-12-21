@@ -6,7 +6,7 @@
     getAllProduct(){
         return async(req, res, next) => {
             console.log('Request: get all product');
-            await this._cursor.collection(`${this._collection}`).find({})
+            await this._cursor.collection(`${this._collection}`).find({}).limit(8)
             .toArray()
             .then((result) =>{res.send(result)})
             .catch((error) => {res.send({status: "false"})})

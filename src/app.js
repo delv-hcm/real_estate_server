@@ -54,17 +54,15 @@ var startServer = (appconfig, mongoClient) => {
             console.log(path.replace('/api', ''));
             return path.replace('/api', '');
         },
-       
-       
     }))
 
     app.get('/', (req, res, next) => {
         res.send('Hello world');
     });
 
-    app.use(router(new Product(handler.Cursor,'item'))); 
+    app.use(router(new Product(handler.Cursor,'product'))); 
     
-    app.listen(appconfig.app.port, () => {
+    app.listen(appconfig.app.port || process.env.PORT, () => {
         console.log(`Server is running on ${appconfig.app.port}`);
     })
 }

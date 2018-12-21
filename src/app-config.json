@@ -1,10 +1,10 @@
 {
     "db": {
-        "url_path": "127.0.0.1:27017",
-        "database": "mongomart"
+        "url_path": "mongo:27017",
+        "database": "demov10"
     },
     "app": {
-        "port": 3500        
+        "port": 8080        
     },
-    "reverseproxy": "http://localhost:3500"
+    "reverseproxy": "http://localhost:8080"
 }
