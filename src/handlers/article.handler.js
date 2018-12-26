@@ -1,4 +1,4 @@
- class Product {
+class Article {
 
     constructor(Cursor, collection) {
         this._cursor = Cursor;
@@ -7,7 +7,7 @@
 
     getAll(){
         return async(req, res, next) => {
-            console.log('Request: get all product');
+            console.log('Request: get all article');
             await this._cursor.collection(`${this._collection}`).find({}).limit(12)
             .toArray()
             .then((result) =>{res.send(result)})
@@ -18,8 +18,9 @@
 
     getDetail(){
         return async(req, res, next) => {
-            const query = {_id: parseInt(req.params.productId)};
-            console.log('Get Product detail by id', query);
+            console.log(req.params);
+            const query = {articleId: req.params.articleId};
+            console.log('Get Artice detail by id', query);
             await this._cursor.collection(`${this._collection}`).find(query)
             .toArray()
             .then((result) =>{res.send(result)})
@@ -30,4 +31,4 @@
 
     
 }
-module.exports = Product;
+module.exports = Article;
