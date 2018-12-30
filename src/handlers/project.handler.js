@@ -1,3 +1,4 @@
+var ObjectId = require('mongodb').ObjectID;
 class Project {
 
     constructor(Cursor, collection) {
@@ -19,6 +20,18 @@ class Project {
     getDetail(){
         return async(req, res, next) => {
             const query = {projectId: req.params.projectId};
+            console.log('Get Project detail by ProjectId', query);
+            await this._cursor.collection(`${this._collection}`).find(query)
+            .toArray()
+            .then((result) =>{res.send(result)})
+            .catch((error) => {res.send({status: "false"})})
+            next();
+        }
+    }
+
+    getDetailbyId(){
+        return async(req, res, next) => {
+            const query = {_id: ObjectId(req.params.id)};
             console.log('Get Project detail by id', query);
             await this._cursor.collection(`${this._collection}`).find(query)
             .toArray()

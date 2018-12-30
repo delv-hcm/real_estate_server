@@ -1,7 +1,7 @@
 {
     "db": {
         "url_path": "mongo:27017",
-        "database": "demov10"
+        "database": "sample"
     },
     "app": {
         "port": 8080        
