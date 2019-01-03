@@ -1,0 +1,4 @@
+﻿Parse error on line 1:
+{ "_id" : ObjectId("5c28884581
+----------^
+Expecting 'STRING', 'NUMBER', 'NULL', 'TRUE', 'FALSE', '{', '[', got 'undefined'
