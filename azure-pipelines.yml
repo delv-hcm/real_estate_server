@@ -21,3 +21,5 @@ steps:
     docker login demonodejs.azurecr.io -u df7c2cb1-592c-43a4-8e45-564193544739 -p cffae9ee-aceb-43e1-bd80-5d13a3b720ef
     docker push demonodejs.azurecr.io/mainapp:$(Build.BuildId)
   displayName: 'Tag, login and push mainapp image to Azure Container Registry'
+- script: |
+    docker-compose -f ./docker-compose.yml --project-directory . -p ./ up -d
